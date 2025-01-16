@@ -7,8 +7,15 @@ require('dotenv').config();  // Ensure to load environment variables from .env f
 const app = express();
 const port = 5001;
 
-// Middleware
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://apitestcases.netlify.app', // Allow requests from this origin
+  methods: ['GET', 'POST', 'OPTIONS'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // API Request Details
